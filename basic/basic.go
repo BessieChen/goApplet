@@ -10,11 +10,12 @@ var aa = 3
 
 //错误: bb := 4, 因为它不能在函数外使用
 
-var (
-	b = 3
-	d = "def"
-	c = false
-)
+//2-2
+//var (
+//	b = 3
+//	d = "def"
+//	c = false
+//)
 
 func varaibleZeroValue() {
 	var a int
@@ -57,13 +58,51 @@ func triangle() {
 	fmt.Println(c)
 }
 
+func consts() {
+	const filename = "abc.txt"
+	const a, b = 3, 4
+	var c int
+	c = int(math.Sqrt(a + b))
+	fmt.Println(filename, c)
+}
+
+func enums() {
+	const (
+		cpp    = 0
+		java   = 1
+		golang = 2
+	)
+	fmt.Println(cpp, java, golang)
+}
+
+func enums2() {
+	const (
+		cpp = iota
+		_
+		python
+		golang
+		java
+	)
+
+	const (
+		b = 1 << (1 * iota)
+		c
+		d
+		e
+	)
+	fmt.Println(cpp, java)
+	fmt.Println(b, c, d, e)
+}
+
 func main() {
 	fmt.Println("hello world")
-	varaibleZeroValue()
-	variableIntialValue()
-	variableTypeDeduction()
-	variableShort()
+	//varaibleZeroValue()
+	//variableIntialValue()
+	//variableTypeDeduction()
+	//variableShort()
+	//
+	//euler()
+	//triangle()
 
-	euler()
-	triangle()
+	enums2()
 }
