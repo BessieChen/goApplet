@@ -3,8 +3,10 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"os"
 	"strconv"
+	"strings"
 )
 
 func convertToBinary(n int) string {
@@ -20,11 +22,15 @@ func convertToBinary(n int) string {
 }
 
 func printFile(filename string) {
-	file, err := os.Open(filename)
+	reader, err := os.Open(filename)
 	if err != nil {
 		panic(err)
 	}
-	scanner := bufio.NewScanner(file)
+	printFileContents(reader)
+}
+
+func printFileContents(reader io.Reader) {
+	scanner := bufio.NewScanner(reader)
 	for scanner.Scan() {
 		fmt.Println(scanner.Text())
 	}
@@ -38,6 +44,12 @@ func foreverLoop() {
 
 func main() {
 	fmt.Println(convertToBinary(8), convertToBinary(16), convertToBinary(13))
-	printFile("abc.txt")
+	//printFile("abc.txt")
+
+	s := `'
+	rjelwkjepidojc
+	rejoijc`
+
+	printFileContents(strings.NewReader(s)) //所以我们不仅可以打印 .txt, 还可以打印各种string
 
 }
